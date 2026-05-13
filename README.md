@@ -17,7 +17,7 @@
 
 
 ## Структура проекта
-disk_info/
+disk_info/  
 ├── app/  
 │ ├── templates/  
 │ │ └── index.html # веб-интерфейс  
