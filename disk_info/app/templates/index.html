@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Анализ хранилища</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f0f2f5;
+        }
+        h1 {
+            color: #1a1a2e;
+            text-align: center;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .disk-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0f3460;
+            margin-bottom: 10px;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            color: #555;
+        }
+        .bar-container {
+            background: #e0e0e0;
+            border-radius: 10px;
+            height: 30px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .bar {
+            background: linear-gradient(90deg, #4CAF50, #2196F3);
+            height: 100%;
+            width: 0%;
+            border-radius: 10px;
+            transition: width 0.3s;
+            line-height: 30px;
+            color: white;
+            text-align: center;
+            font-size: 14px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #888;
+            font-size: 12px;
+        }
+        button {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 0 auto 20px;
+        }
+        button:hover {
+            background: #0b7dda;
+        }
+    </style>
+</head>
+<body>
+    <h1>Анализ хранилища</h1>
+    <button onclick="location.reload()">Обновить</button>
+
+    {% for disk in disks %}
+    <div class="card">
+        <div class="disk-name">📀 Диск: {{ disk.name }}</div>
+        <div class="stats">
+            <span>📦 Всего: {{ disk.total }}</span>
+            <span>📁 Занято: {{ disk.used }}</span>
+            <span>📂 Свободно: {{ disk.free }}</span>
+        </div>
+        <div class="bar-container">
+            <div class="bar" style="width: {{ disk.bar_width }}%;">
+                {{ disk.percent }}%
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="footer">
+        ⚡ Информация о дисках актуальна на момент загрузки страницы
+    </div>
+</body>
+</html>
