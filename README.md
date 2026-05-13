@@ -29,10 +29,12 @@ disk_info/
 └── README.md # описание проекта
 
 ## 🖥 Запуск
-
+### Веб-версия
 pip install flask
 python run.py
 http://127.0.0.1:5000
 
+### Консольная версия
+python 'main.py'
 
 
